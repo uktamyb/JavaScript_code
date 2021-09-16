@@ -109,22 +109,51 @@ writeYourGenres(); */
 // wrapper.append(div);
 // wrapper.prepend(div);
 
-const btn = document.querySelector("#btn");
+// const btn = document.querySelector("#btn");
 
-const button = document.querySelector(".button");
+// const button = document.querySelector(".button");
 
-let index = 0;
-const callFunc = () => {
-  console.log("Hello World");
-  index++;
-  console.log(index);
-  if (index == 3) {
-    btn.removeEventListener("click", callFunc);
-  }
-};
+// let index = 0;
+// const callFunc = () => {
+//   console.log("Hello World");
+//   index++;
+//   console.log(index);
+//   if (index == 3) {
+//     btn.removeEventListener("click", callFunc);
+//   }
+// };
 
-btn.addEventListener("click", callFunc);
+// btn.addEventListener("click", callFunc);
 
-button.addEventListener("click", (event) => {
-  console.log(event);
+// button.addEventListener("click", (event) => {
+//   console.log(event);
+// });
+
+const wrapper = document.querySelector(".wrapper");
+
+const btn = wrapper.querySelector("[data-myButton='1']");
+
+const btns = wrapper.querySelectorAll("button");
+
+btns.forEach((e, index) => {
+  e.addEventListener("click", () => {
+    console.log(index + 1 + " Hii");
+  });
 });
+
+// console.log(document.body.childNodes);
+
+// for (let i of document.body.childNodes) {
+//   if (i.nodeName == "#text") {
+//     continue;
+//   }
+//   console.log(i);
+// }
+
+// btn.addEventListener(
+//   "click",
+//   () => {
+//     console.log("Hello");
+//   },
+//   { once: true }
+// );

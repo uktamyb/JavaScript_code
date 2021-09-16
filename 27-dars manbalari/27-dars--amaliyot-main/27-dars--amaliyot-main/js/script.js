@@ -17,38 +17,58 @@ Yangiliklarni massiv yordamida chiqaring. Html dan ochirip Faqat JS code yozip.
 
 "use strict";
 
-const news = [
-  "FOOTBALL",
-  "BASKETBALL",
-  "UFC",
-  "BOX",
-  "AMERICAN FOOTBAL IN EU...",
-];
+document.addEventListener("DOMContentLoaded", () => {
+  const news = [
+    "FOOTBALL",
+    "BASKETBALL",
+    "UFC",
+    "BOX",
+    "AMERICAN FOOTBAL IN EU...",
+  ];
 
-const btnNews = document.querySelector(".btn__news"),
-  promoBtn = document.querySelector(".promo__btn button"),
-  promoGenre = document.querySelector(".promo__genre"),
-  promoBg = document.querySelector(".promo__bg"),
-  newsList = document.querySelector(".promo__interactive-list")
+  const btnNews = document.querySelector(".btn__news"),
+    promoBtn = document.querySelector(".promo__btn button"),
+    promoGenre = document.querySelector(".promo__genre"),
+    promoBg = document.querySelector(".promo__bg"),
+    newsList = document.querySelector(".promo__interactive-list"),
+    addForm = document.querySelector(".add"),
+    addInput = document.querySelector(".adding__input"),
+    addCheckbox = addForm.querySelector("[type='checkbox']");
 
-btnNews.remove();
+  const sortArr = (arr) => {
+    arr.sort();
+  };
 
-promoBtn.style.cssText = "border-radius: 20px";
+  addForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-// promoGenre.innerHTML = "UzNews";
-promoGenre.textContent = "UzNews";
-// promoGenre.insertAdjacentHTML("afterbegin", "UzNews"); // turgan yozuvga qushimcha yozuv qushish
-promoGenre.style.color = "yellow";
+    let newItem = addInput.value;
+    const favourite = checkbox.checked;
+    news.push(newItem);
+    sortArr(news);
+  });
 
-promoBg.style.backgroundImage = "url('img/2.jpg')";
+  btnNews.remove();
 
-newsList.innerHTML = "";
+  promoBtn.style.cssText = "border-radius: 20px";
 
-news.forEach((item, index) => {
-  newsList.innerHTML += 
-    `<li class="promo__interactive-item">
-      ${index + 1}. ${item}
-      <div class="delete"></div>
-    </li>`
+  // promoGenre.innerHTML = "UzNews";
+  promoGenre.textContent = "UzNews";
+  // promoGenre.insertAdjacentHTML("afterbegin", "UzNews"); // turgan yozuvga qushimcha yozuv qushish
+  promoGenre.style.color = "yellow";
+
+  promoBg.style.backgroundImage = "url('img/2.jpg')";
+
+  function addNewsList(newsAdd, parent) {
+    parent.innerHTML = "";
+    sortArr(news);
+    newsAdd.forEach((item, index) => {
+      parent.innerHTML += `<li class="promo__interactive-item">
+        ${index + 1}. ${item}
+        <div class="delete"></div>
+      </li>`;
+    });
+    document.querySelector(".delete");
+  }
+  addNewsList(news, newsList);
 });
-
